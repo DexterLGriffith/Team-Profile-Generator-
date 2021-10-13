@@ -9,15 +9,27 @@ describe("employeeTest", () => {
 })
 describe("employeeTest", () => {
     it("can create name within employee object", () => {
-        const employee = new Employee("name");
+        const name = "Dex"
+        const employee = new Employee(name);
 
-        expect(employee.name).toEqual("name");
+        expect(employee.name).toEqual(name);
     });
 })
 describe("employeeTest", () => {
-    it("can create ID within employee object", () => {
-        const id = new Employee("id")
+    it("can create id within employee object", () => {
+        // need to define id 
+        const idTest = 50;
+        const e = new Employee("Test", idTest)
+       
 
-        expect(employee.id).toEqual("id")
+        expect(e.id).toEqual(idTest)
     });
 })
+
+// from notes   describe("isPalindrome", () => {
+    // it("should return true if a string is a palindrome", () => {
+    //     const str = "racecar";
+  
+    //     const result = new Algo().isPalindrome(str);
+  
+    //     expect(result).toEqual(true);

@@ -5,7 +5,16 @@ const path = require('path');
 //prompt questions for TEAM BUILDING 
 inquirer, prompt([
 
-
+    // prompt questions to ask for each person... on the command line. 
+    {
+        message: "Whats your position?",
+        name: "position",
+        type: "input",
+    },
+    {
+        message: "What is your name?",
+        name: "name",
+        type: "input",
 
 
 
