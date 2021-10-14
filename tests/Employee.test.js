@@ -28,26 +28,20 @@ describe("employeeTest", () => {
 describe("employeeTest", () => {
     it("can create email within employee object", () => {
         // get email 
-        const email = tester@testy.com;
-        const e = new Employee("Test", email)
+        const emailTest = "tester@testy.com";
+        const e = new Employee("Test", emailTest)
        
 
-        expect(e.email).toEqual(email)
+        expect(e.email).toEqual(emailTest)
     });
-// describe("employeeTest", () => {
-//     it("can create role within employee object", () => {
-//        //get role
-//         const idTest = 50;
-//         const e = new Employee("Test", idTest)
+})
+describe("employeeTest", () => {
+    it("can create role within employee object", () => {
+       //get role
+        const role = "staff";
+        const e = new Employee("Test", role)
        
 
-//         expect(e.id).toEqual(idTest)
-//     });
-
-// from notes   describe("isPalindrome", () => {
-    // it("should return true if a string is a palindrome", () => {
-    //     const str = "racecar";
-  
-    //     const result = new Algo().isPalindrome(str);
-  
-    //     expect(result).toEqual(true);
+        expect(e.role).toEqual(role)
+    });
+})
