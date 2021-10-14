@@ -38,10 +38,10 @@ describe("employeeTest", () => {
 describe("employeeTest", () => {
     it("can create role within employee object", () => {
        //get role
-        const role = "staff";
-        const e = new Employee("Test", role)
+        const role = "Employee";
+        const e = new Employee("Test", 1, "tester@testy.com")
        
 
-        expect(e.role).toEqual(role)
+        expect(e.getRole()).toEqual(role)
     });
 })
