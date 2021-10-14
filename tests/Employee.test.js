@@ -29,7 +29,7 @@ describe("employeeTest", () => {
     it("can create email within employee object", () => {
         // get email 
         const emailTest = "tester@testy.com";
-        const e = new Employee("Test", emailTest)
+        const e = new Employee("Test", 1, emailTest)
        
 
         expect(e.email).toEqual(emailTest)
