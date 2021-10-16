@@ -67,11 +67,67 @@ function managerQuestion() {
         employeeQuestion.push(newManager);
     })
 }
+//pretty much copy paste from last section... change a couple variables. 
 function engineerQuestion() {
+    return inquirer.prompt([
+        {
+            message: "What is your Managers name?",
+            name: "name",
+            type: "input",
+        },
+        {
+            message: "What is your ID?",
+            name: "id",
+            type: "input",
+        },
+        {
+            message: "What is your email?",
+            name: "email",
+            type: "input",
+        },
+        {
+            message: "What is your Github Url?",
+            name: "Github",
+            type: "input",
+        },
 
+    ])
+    //take data from inquirer and pass into employeequestion
+    .then ((data) => {
+        const newEngineer = new Engineer(data.name,data.id,data.email,data.Github);
+        employeeQuestion.push(newEngineer);
+    })
 }
+//pretty much copy paste from last section... change a couple variables. 
 function internQuestion() {
-    
+    return inquirer.prompt([
+        {
+            message: "What is your Managers name?",
+            name: "name",
+            type: "input",
+        },
+        {
+            message: "What is your ID?",
+            name: "id",
+            type: "input",
+        },
+        {
+            message: "What is your email?",
+            name: "email",
+            type: "input",
+        },
+        {
+            message: "What school did you go to?",
+            name: "school",
+            type: "input",
+        },
+
+    ])
+    //take data from inquirer and pass into employeequestion
+    .then ((data) => {
+        const newIntern = new Intern(data.name,data.id,data.email,data.school);
+        employeeQuestion.push(newIntern);
+    })
 }
 //get it to write the index.html and CSS file.  
 .then((data) => {
