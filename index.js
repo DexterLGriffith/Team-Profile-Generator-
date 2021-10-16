@@ -70,7 +70,9 @@ function managerQuestion() {
 function engineerQuestion() {
 
 }
-function internQuestion()
+function internQuestion() {
+    
+}
 //get it to write the index.html and CSS file.  
 .then((data) => {
     fs.writeFile(
