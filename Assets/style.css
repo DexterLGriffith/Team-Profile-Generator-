@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+}    
+.employeeContainer {
+    display: flex;
+    justify-content: center;
+}
+.row {
+    border: 5px ;
+    border-color: black;
+}
+.display-4{
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    height: 200px;
+    align-items: center;
+    font-size: 4rem !important;
+    font-weight: bolder !important;
+}

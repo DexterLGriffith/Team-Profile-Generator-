@@ -6,6 +6,7 @@ const path = require('path');
 const Engineer = require('./Lib/Engineer');
 const Intern = require('./Lib/Intern');
 const Manager = require('./Lib/Manager');
+const templateIndex = require('./templateIndex');
 
 //prompt questions for TEAM BUILDING 
 const employeeQuestion []
@@ -41,17 +42,17 @@ function managerQuestion() {
     return inquirer.prompt([
         {
             message: "What is your Managers name?",
-            name: "name",
+            name: "managerName",
             type: "input",
         },
         {
             message: "What is your ID?",
-            name: "id",
+            name: "managerId",
             type: "input",
         },
         {
             message: "What is your email?",
-            name: "email",
+            name: "managerEmail",
             type: "input",
         },
         {
@@ -72,17 +73,17 @@ function engineerQuestion() {
     return inquirer.prompt([
         {
             message: "What is your Managers name?",
-            name: "name",
+            name: "engineerName",
             type: "input",
         },
         {
             message: "What is your ID?",
-            name: "id",
+            name: "engineerId",
             type: "input",
         },
         {
             message: "What is your email?",
-            name: "email",
+            name: "engineerEmail",
             type: "input",
         },
         {
@@ -103,22 +104,22 @@ function internQuestion() {
     return inquirer.prompt([
         {
             message: "What is your Managers name?",
-            name: "name",
+            name: "internName",
             type: "input",
         },
         {
             message: "What is your ID?",
-            name: "id",
+            name: "internId",
             type: "input",
         },
         {
             message: "What is your email?",
-            name: "email",
+            name: "internEmail",
             type: "input",
         },
         {
             message: "What school did you go to?",
-            name: "school",
+            name: "internSchool",
             type: "input",
         },
 
@@ -131,16 +132,8 @@ function internQuestion() {
 }
 //get it to write the index.html and CSS file.  
 .then((data) => {
-    fs.writeFile(
-        if () {
-
-        }
-        else {
-
-        }
-    )};
-
-});
+    fs.writeFileSync('', templateIndex)
+}
 
 //how i did readme generator. 
 // .then((data) => {
