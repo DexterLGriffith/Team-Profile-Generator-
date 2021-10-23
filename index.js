@@ -7,9 +7,10 @@ const Engineer = require('./Lib/Engineer');
 const Intern = require('./Lib/Intern');
 const Manager = require('./Lib/Manager');
 const templateIndex = require('./templateIndex');
+const render = require('./generateHTML');
 
 //prompt questions for TEAM BUILDING 
-const employeeQuestion []
+const employeeQuestion = []
 function typeOfMember () {
     return inquirer.prompt([
         {
@@ -131,8 +132,9 @@ function internQuestion() {
     })
 }
 //get it to write the index.html and CSS file.  
-.then((data) => {
-    fs.writeFileSync('', templateIndex)
+const writeToFile = () => {
+    const contentHTML = render (employeeQuestion)
+        fs.writeFileSync('index.html', contentHTML )
 }
 
 //how i did readme generator. 
