@@ -1,8 +1,8 @@
 // const Manager = require("./Lib/Manager");
 // const Intern = require("./Lib/Intern");
 // const Engineer = require("./Lib/Engineer");
-const renderedTeam = team => {
-    const renderedManager = manager => {
+const renderedTeam = (team) => {
+    const renderedManager = (manager) => {
         return `        
         <div class="card" style="width: 18rem;">
         <div class="card-body" style="background-color: red;">
@@ -19,7 +19,7 @@ const renderedTeam = team => {
     };
 
     // repeat for intern 
-    const renderedIntern = intern => {
+    const renderedIntern = (intern) => {
         return `
         <div class="card" style="width: 18rem;">
         <div class="card-body" style="background-color: red;">
@@ -35,7 +35,7 @@ const renderedTeam = team => {
     };
 
     // repeat for engineer
-    const renderedEngineer = engineer => {
+    const renderedEngineer = (engineer) => {
         return `
         <div class="card" style="width: 18rem;">
         <div class="card-body" style="background-color: red;">
@@ -50,27 +50,32 @@ const renderedTeam = team => {
       </div>
       `
     };
+
+
+const emptyHTMLArray = [];
+
+emptyHTMLArray.push(team.filter((employee) => employee.getRole() === "Manager")
+.map((manager) => renderedManager(manager))
+);
+
+emptyHTMLArray.push(team.filter((employee) => employee.getRole() === "Engineer")
+.map((engineer) => renderedEngineer(engineer))
+);
+
+
+emptyHTMLArray.push(team.filter((employee) => employee.getRole() === "Intern")
+.map((intern) => renderedIntern(intern))
+);
+
+return emptyHTMLArray.join("");
+
 };
 
-const emptyHTMLArray = []
-emptyHTMLArray.push(team.filter(employee=>employee.getRole() === "Manager")
-.map(manager => renderedManager(manager)));
-
-emptyHTMLArray.push(team.filter(employee=>employee.getRole() === "Engineer")
-.map(engineer => renderedEngineer(engineer)))
-.join("");
-
-emptyHTMLArray.push(team.filter(employee=>employee.getRole() === "Intern")
-.map(intern => renderedIntern(intern)))
-.join("");
-
-return emptyHTMLArray.join("")
-
- module.exports = team => {
+ module.exports = (team) => {
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team Profile Generator</title>
