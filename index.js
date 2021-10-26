@@ -1,12 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
-
 //import lib js files. 
 const Engineer = require('./Lib/Engineer');
 const Intern = require('./Lib/Intern');
 const Manager = require('./Lib/Manager');
-const templateIndex = require('./templateIndex');
+
+const OUTPUT_DIR = path.resolve(__dirname, "Assets");
+const outputPath = path.join(OUTPUT_DIR, "index.html");
 const render = require('./generateHTML');
 
 //prompt questions for TEAM BUILDING 
@@ -14,7 +15,7 @@ const employeeQuestion = []
 function typeOfMember () {
     return inquirer.prompt([
         {
-            message: "what kind of member would you like to add?",
+            message: "What kind of member would you like to add?",
             name: "type",
             type: "list",
             choice: [
@@ -27,6 +28,7 @@ function typeOfMember () {
         }
     ])
     .then((data) => {
+        console.log(data);
         if (data.type === "Manager"){
             managerQuestion();
         }
@@ -36,38 +38,41 @@ function typeOfMember () {
         else if (data.type === "Engineer"){
             engineerQuestion();
         }
-        else {returnGeneratedHTML()};    
-    })
+        else {writeToFile();
+        }    
+    });
 }
 function managerQuestion() {
-    return inquirer.prompt([
+    return (
+        inquirer.prompt([
         {
             message: "What is your Managers name?",
-            name: "managerName",
+            name: "name",
             type: "input",
         },
         {
             message: "What is your ID?",
-            name: "managerId",
+            name: "id",
             type: "input",
         },
         {
             message: "What is your email?",
-            name: "managerEmail",
+            name: "email",
             type: "input",
         },
         {
             message: "What is your office number?",
-            name: "officeNumber",
+            name: "number",
             type: "input",
         },
-
     ])
     //take data from inquirer and pass into employeequestion
     .then ((data) => {
         const newManager = new Manager(data.name,data.id,data.email,data.officeNumber);
         employeeQuestion.push(newManager);
+        typeOfMember();
     })
+    );
 }
 //pretty much copy paste from last section... change a couple variables. 
 function engineerQuestion() {
