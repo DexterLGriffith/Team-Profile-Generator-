@@ -12,135 +12,143 @@ const render = require('./generateHTML');
 
 //prompt questions for TEAM BUILDING 
 const employeeQuestion = []
-function typeOfMember () {
+function typeOfMember() {
     return inquirer.prompt([
         {
             message: "What kind of member would you like to add?",
             name: "type",
             type: "list",
-            choice: [
+            choices: [
                 "Manager",
                 "Intern",
                 "Engineer",
-                "Im done adding members",
-            ]
+                "Im done adding members"
+            ],
 
         }
     ])
-    .then((data) => {
-        console.log(data);
-        if (data.type === "Manager"){
-            managerQuestion();
-        }
-        else if (data.type === "Intern"){
-            internQuestion();
-        }
-        else if (data.type === "Engineer"){
-            engineerQuestion();
-        }
-        else {writeToFile();
-        }    
-    });
+        .then((data) => {
+            console.log(data);
+            if (data.type === "Manager") {
+                managerQuestion();
+            }
+            else if (data.type === "Intern") {
+                internQuestion();
+            }
+            else if (data.type === "Engineer") {
+                engineerQuestion();
+            }
+            else {
+                writeToFile();
+                console.log('Heres your team!');
+            }
+        });
 }
 function managerQuestion() {
     return (
         inquirer.prompt([
-        {
-            message: "What is your Managers name?",
-            name: "name",
-            type: "input",
-        },
-        {
-            message: "What is your ID?",
-            name: "id",
-            type: "input",
-        },
-        {
-            message: "What is your email?",
-            name: "email",
-            type: "input",
-        },
-        {
-            message: "What is your office number?",
-            name: "number",
-            type: "input",
-        },
-    ])
-    //take data from inquirer and pass into employeequestion
-    .then ((data) => {
-        const newManager = new Manager(data.name,data.id,data.email,data.officeNumber);
-        employeeQuestion.push(newManager);
-        typeOfMember();
-    })
+            {
+                message: "What is your Managers name?",
+                name: "name",
+                type: "input",
+            },
+            {
+                message: "What is your ID?",
+                name: "id",
+                type: "input",
+            },
+            {
+                message: "What is your email?",
+                name: "email",
+                type: "input",
+            },
+            {
+                message: "What is your office number?",
+                name: "number",
+                type: "input",
+            },
+        ])
+            //take data from inquirer and pass into employeequestion
+            .then((data) => {
+                const newManager = new Manager(data.name, data.id, data.email, data.officeNumber);
+                employeeQuestion.push(newManager);
+                typeOfMember();
+            })
     );
 }
 //pretty much copy paste from last section... change a couple variables. 
 function engineerQuestion() {
-    return inquirer.prompt([
-        {
-            message: "What is your Managers name?",
-            name: "engineerName",
-            type: "input",
-        },
-        {
-            message: "What is your ID?",
-            name: "engineerId",
-            type: "input",
-        },
-        {
-            message: "What is your email?",
-            name: "engineerEmail",
-            type: "input",
-        },
-        {
-            message: "What is your Github Url?",
-            name: "Github",
-            type: "input",
-        },
-
-    ])
-    //take data from inquirer and pass into employeequestion
-    .then ((data) => {
-        const newEngineer = new Engineer(data.name,data.id,data.email,data.Github);
-        employeeQuestion.push(newEngineer);
-    })
+    return (
+        inquirer.prompt([
+            {
+                message: "What is your Engineers name?",
+                name: "name",
+                type: "input",
+            },
+            {
+                message: "What is your ID?",
+                name: "id",
+                type: "input",
+            },
+            {
+                message: "What is your email?",
+                name: "email",
+                type: "input",
+            },
+            {
+                message: "What is your Github Url?",
+                name: "Github",
+                type: "input",
+            },
+        ])
+            //take data from inquirer and pass into employeequestion
+            .then((data) => {
+                const newEngineer = new Engineer(data.name, data.id, data.email, data.Github);
+                employeeQuestion.push(newEngineer);
+                typeOfMember();
+            })
+    );
 }
 //pretty much copy paste from last section... change a couple variables. 
 function internQuestion() {
-    return inquirer.prompt([
-        {
-            message: "What is your Managers name?",
-            name: "internName",
-            type: "input",
-        },
-        {
-            message: "What is your ID?",
-            name: "internId",
-            type: "input",
-        },
-        {
-            message: "What is your email?",
-            name: "internEmail",
-            type: "input",
-        },
-        {
-            message: "What school did you go to?",
-            name: "internSchool",
-            type: "input",
-        },
+    return (
+        inquirer.prompt([
+            {
+                message: "What is your Interns name?",
+                name: "name",
+                type: "input",
+            },
+            {
+                message: "What is your ID?",
+                name: "id",
+                type: "input",
+            },
+            {
+                message: "What is your email?",
+                name: "email",
+                type: "input",
+            },
+            {
+                message: "What school did you go to?",
+                name: "school",
+                type: "input",
+            },
 
-    ])
-    //take data from inquirer and pass into employeequestion
-    .then ((data) => {
-        const newIntern = new Intern(data.name,data.id,data.email,data.school);
-        employeeQuestion.push(newIntern);
-    })
+        ])
+            //take data from inquirer and pass into employeequestion
+            .then((data) => {
+                const newIntern = new Intern(data.name, data.id, data.email, data.school);
+                employeeQuestion.push(newIntern);
+                typeOfMember();
+            })
+    );
 }
+typeOfMember();
 //get it to write the index.html and CSS file.  
 const writeToFile = () => {
-    const contentHTML = render (employeeQuestion)
-        fs.writeFileSync('index.html', contentHTML )
-}
+    const contentHTML = render(employeeQuestion);
+    fs.writeFileSync(outputPath, contentHTML, "utf-8");
+};
 
 //how i did readme generator. 
 // .then((data) => {

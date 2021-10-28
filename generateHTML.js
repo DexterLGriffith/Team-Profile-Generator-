@@ -29,7 +29,7 @@ const renderedTeam = (team) => {
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${intern.getId()}</li>
             <li class="list-group-item">Email: ${intern.getEmail()}</li>
-            <li class="list-group-item">Number: ${intern.getSchool()}</li>
+            <li class="list-group-item">School: ${intern.getSchool()}</li>
         </ul>
         `
     };
@@ -45,7 +45,7 @@ const renderedTeam = (team) => {
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${engineer.getId()}</li>
             <li class="list-group-item">Email: ${engineer.getEmail()}</li>
-            <li class="list-group-item">Number: ${engineer.getGithub()}</li>
+            <li class="list-group-item">Github: ${engineer.getGithub()}</li>
         </ul>
       </div>
       `
